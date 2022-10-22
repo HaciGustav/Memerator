@@ -20,7 +20,7 @@ const Header = () => {
                 <h1 className="ms-3">Memerator</h1>
             </div>
             <a href="#" className="d-flex align-items-center pe-5 text-dark">
-                <p className="h2 pe-3 pt-2">GitHub</p>
+                <p className="h2 pe-3 pt-1">GitHub</p>
                 <BsGithub size={'3rem'} />
             </a>
         </div>

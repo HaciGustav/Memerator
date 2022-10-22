@@ -6,10 +6,24 @@ import memeData from '../helper/memeData';
 
 const Home = () => {
     const [memeFromData, setMemeFromData] = useState({});
+    const [texts, setTexts] = useState({
+        top: '',
+        bottom: '',
+    });
+    console.log(texts);
+    const getValue = (e) => {
+        setTexts((prevValue) => {
+            return {
+                ...prevValue,
+                [e.target.name]: e.target.value,
+            };
+        });
+    };
     const { memes } = memeData.data;
     const getMeme = (data) => {
-        const meme = memes[Math.floor(Math.random() * memes.length - 1)];
+        const meme = memes[Math.floor(Math.random() * memes.length)];
         setMemeFromData(meme);
+        setTexts({ top: '', bottom: '' });
     };
     useEffect(() => {
         getMeme(memes);
@@ -18,8 +32,8 @@ const Home = () => {
     return (
         <div>
             <Header />
-            <Input getMeme={getMeme} />
-            <Meme memeFromData={memeFromData} />
+            <Input getMeme={getMeme} getValue={getValue} texts={texts} />
+            <Meme memeFromData={memeFromData} meme={memes} texts={texts} />
         </div>
     );
 };
